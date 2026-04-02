@@ -1,0 +1,52 @@
+# --- TECLA MAESTRA ---
+# Mod4 = Tecla Windows/Super. (Mod1 sería Alt)
+set $mod Mod4
+
+# --- APLICACIONES PRINCIPALES ---
+bindsym $mod+Return exec kitty
+bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
+bindsym $mod+e exec thunar
+bindsym $mod+b exec firefox
+
+# --- GESTIÓN DE VENTANAS ---
+bindsym $mod+q kill
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+space floating toggle
+
+# --- ESPACIOS DE TRABAJO ---
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+
+# --- CONTROL DE i3 ---
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m '¿Seguro que quieres salir, we?' -b 'Sí, sácame' 'i3-msg exit'"
+
+# --- BORDES DE VENTANAS ---
+default_border pixel 2
+client.focused          #89b4fa #1e1e2e #cdd6f4 #89b4fa #89b4fa
+client.unfocused        #313244 #1e1e2e #6c7086 #313244 #313244
+client.focused_inactive #313244 #1e1e2e #6c7086 #313244 #313244
+client.urgent           #f38ba8 #1e1e2e #cdd6f4 #f38ba8 #f38ba8
+
+# --- AUTOSTART ---
+exec_always --no-startup-id killall polybar; polybar principal &
+exec_always --no-startup-id xfsettingsd &
+exec_always --no-startup-id picom -b
+exec_always --no-startup-id xwallpaper --zoom ~/Wallpapers/ws1.png
